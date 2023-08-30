@@ -3,4 +3,5 @@ virtual-env
 __pycache__
 .venv
 .vscode
+scraped_content
 .gitignore

@@ -1,60 +1,63 @@
-# Scrape the Web with entities extraction using OpenAI Function
+# EntityScrapeToolkit
 
-## What is this?
+## Overview
 
-This codebase allows you to scrape any website and extract relevant data points easily.
-Create a schema in `schemas.py`, pick a url, and use them with `scrape_with_playwright()` in `main.py` to start scraping.
+EntityScrapeToolkit is a powerful tool designed to scrape websites and extract relevant data points with ease. It not only fetches the content but also saves the scraped data into text files for further analysis or reference.
 
-Tip: each website has the bulk of content either in `<p>`, `<span>` or `<h>` tags. For best performance, choose a combination of tags that work for you.
+## Features
 
-```python
-asyncio.run(scrape_with_playwright(
-        url="https://www.bbc.com",
-        tags=["span"],
-        schema_pydantic=SchemaNewsWebsites
-    ))
-```
+- Scrape content from any website.
+- Extract relevant data points using predefined schemas.
+- Save the scraped content into text files.
+- Organize scraped files in a dedicated folder for easy access.
 
-## Setup
+## Getting Started
 
-### Create a new Python virtual environment
+### Setting Up the Environment
 
-`python -m venv virtual-env` or `python3 -m venv virtual-env` (Mac)
+1. **Create a new Python virtual environment**:
+   ```bash
+   python -m venv .venv
+   ```
 
-`py -m venv virtual-env` (Windows 11)
+2. **Activate the virtual environment**:
+   - Windows:
+     ```bash
+     .\.venv\Scripts\activate
+     ```
+   - macOS/Linux:
+     ```bash
+     source .venv/bin/activate
+     ```
 
-### Activate virtual environment
+3. **Install dependencies**:
+   Since we've transitioned to using a `requirements.txt` file, you can install the dependencies using:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-`.\virtual-env\Scripts\activate` (Windows)
+4. **Install playwright** (for SPAs or JS-heavy websites that require a browser to be opened):
+   ```bash
+   playwright install
+   ```
 
-`source virtual-env/bin/activate` (Mac)
+5. **Set up your environment variables**:
+   Create a `.env` file in the root directory and add your OpenAI API key:
+   ```text
+   OPENAI_API_KEY=YOUR_OPENAI_API_KEY
+   ```
 
-### Install dependencies
+### Usage
 
-Run `poetry install --sync` or `poetry install`
-
-### Install playwright (for SPAs or JS-heavy websites that require a browser to be opened)
-
-```bash
-playwright install
-```
-
-### Create a new `.env` file
-
-```text
-OPENAI_API_KEY=XXXXXX
-```
-
-## Usage
-
-### Run locally
-
+To start scraping and saving content from predefined URLs, simply run:
 ```bash
 python main.py
 ```
 
-## Additional Information
+## Important Notes
 
-- Add onto this a FastAPI server to serve this as an API endpoint for ease of use.
+- Always ensure you have the right to scrape a website and respect `robots.txt` and other guidelines set by the website owner.
+- Use the tool responsibly to avoid overloading servers or getting IP-banned.
+- This tool is intended for educational and research purposes. Always ensure you're adhering to ethical and legal standards.
 
-- Use caution when scraping. Don't do anything I wouldn't do (illegal)
+---
